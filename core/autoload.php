@@ -17,4 +17,10 @@ function autoload($path) {
   }
 }
 
-autoload(dirname(__FILE__));
+$ROOT_PATH = dirname('../');
+
+$CORE_PATH = $ROOT_PATH . '/core';
+$CONFIG_PATH = $ROOT_PATH . '/config';
+
+autoload($CORE_PATH);
+autoload($CONFIG_PATH);
