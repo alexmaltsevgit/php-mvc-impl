@@ -31,16 +31,16 @@ class Router {
     $action = $this->get_current_action();
 
     $is_controller_included = $this->try_include_controller($controller);
-//    if (!$is_controller_included) {
-//      $this->get_404();
-//      return;
-//    }
+    if (!$is_controller_included) {
+      $this->get_404();
+      return;
+    }
 
     $is_controller_method_invoked = $this->try_invoke_controller_method($controller, $action);
-//    if (!$is_controller_method_invoked) {
-//      $this->get_404();
-//      return;
-//    }
+    if (!$is_controller_method_invoked) {
+      $this->get_404();
+      return;
+    }
   }
 
 
@@ -95,9 +95,9 @@ class Router {
 
 
   private function get_404() {
-    $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+    $host = 'http://' . General::$site_url . '/';
     header('HTTP/1.1 404 Not Found');
     header("Status: 404 Not Found");
-    header('Location:' . $host . '404');
+    header('Location:' . $host . 'Page404');
   }
 }
