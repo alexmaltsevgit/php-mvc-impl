@@ -4,8 +4,8 @@
 use Core\MVC\BaseController;
 
 
-class Index extends BaseController {
-  public function index() {
+class IndexController extends BaseController {
+  public function action_index() {
     $this->render('index');
   }
 }

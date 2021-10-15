@@ -31,16 +31,16 @@ class Router {
     $action = $this->get_current_action();
 
     $is_controller_included = $this->try_include_controller($controller);
-    if (!$is_controller_included) {
-      $this->get_404();
-      return;
-    }
+//    if (!$is_controller_included) {
+//      $this->get_404();
+//      return;
+//    }
 
     $is_controller_method_invoked = $this->try_invoke_controller_method($controller, $action);
-    if (!$is_controller_method_invoked) {
-      $this->get_404();
-      return;
-    }
+//    if (!$is_controller_method_invoked) {
+//      $this->get_404();
+//      return;
+//    }
   }
 
 
@@ -50,8 +50,8 @@ class Router {
 
 
   private function get_current_controller() {
-    if (!empty($this->current_route[1])) {
-      return ucfirst($this->current_route[1]);
+    if (!empty($this->current_route[2])) {
+      return ucfirst($this->current_route[2]);
     }
 
     return $this->default_controller;
@@ -59,8 +59,8 @@ class Router {
 
 
   private function get_current_action() {
-    if (!empty($this->current_route[2])) {
-      return $this->current_route[2];
+    if (!empty($this->current_route[3])) {
+      return $this->current_route[3];
     }
 
     return $this->default_action;

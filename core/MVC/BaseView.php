@@ -17,7 +17,7 @@ class BaseView {
       extract($data);
     }
 
-    Inclusion::include_template($this->template_name);
+    include General::$templates_path . '/' . $this->template_name . '.php';
   }
 
 
