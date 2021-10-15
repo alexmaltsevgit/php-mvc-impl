@@ -4,6 +4,6 @@
 namespace Core\MVC;
 
 
-class BaseModel {
-
+abstract class BaseModel {
+  public abstract function get_data();
 }

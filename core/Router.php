@@ -86,6 +86,7 @@ class Router {
     $method_name = $this->action_prefix . $method;
 
     if (method_exists($controller_instance, $method_name)) {
+      $controller_instance->current_action = $method;
       $controller_instance->$method_name();
       return true;
     }
