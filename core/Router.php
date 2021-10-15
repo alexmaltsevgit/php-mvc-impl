@@ -9,8 +9,8 @@ use Config\General;
 
 
 class Router {
-  private $controllers_path = "src/controllers";
   private $controller_suffix = 'Controller';
+  private $action_prefix = 'action_';
 
   private $default_controller;
   private $default_action;
@@ -68,7 +68,7 @@ class Router {
 
 
   private function try_include_controller($controller) {
-    $path = $this->controllers_path . '/' . $controller . '.php';
+    $path = General::$controllers_path . '/' . $controller . '.php';
 
     if (file_exists($path)) {
       include $path;
@@ -83,8 +83,10 @@ class Router {
     $controller_name = $controller . $this->controller_suffix;
     $controller_instance = new $controller_name;
 
-    if (method_exists($controller_instance, $method)) {
-      $controller_instance->$method;
+    $method_name = $this->action_prefix . $method;
+
+    if (method_exists($controller_instance, $method_name)) {
+      $controller_instance->$method_name();
       return true;
     }
 
