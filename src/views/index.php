@@ -1,1 +1,3 @@
-Hello world
+<div>
+  Основной контент
+</div>
