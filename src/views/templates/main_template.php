@@ -1,11 +1,15 @@
 <?php
 
-function get_link($item) {
-    return $item['action']
-      ? $item['controller'] . '/' . $item['action']
-      : $item['controller'];
-}
 
+use Config\General;
+
+
+$navigation_model = new NavigationModel();
+$navigation_items = $navigation_model->get_data();
+
+function get_link($item) {
+  return './' . $item['controller'] . '/' . $item['action'];
+}
 ?>
 
 <!doctype html>
@@ -27,12 +31,12 @@ function get_link($item) {
 <body>
 
 <header class="header">
-    <a href="./" class="logo">Логотип</a>
+    <a href="/php-mvc-impl/" class="logo">Логотип</a>
     <nav class="navigation row">
         <ul>
             <?php foreach ($navigation_items as $item): ?>
                 <li>
-                    <a href="./<?= get_link($item) ?>">
+                    <a href="/php-mvc-impl/<?= get_link($item) ?>">
                       <?= $item['title'] ?>
                     </a>
                 </li>
@@ -41,23 +45,7 @@ function get_link($item) {
     </nav>
 </header>
 
-<aside class="sidebar column">
-    <nav class="navigation column">
-        <ul>
-          <?php foreach ($submenu as $item): ?>
-              <li>
-                  <a href="./<?= get_link($item) ?>">
-                    <?= $item['title'] ?>
-                  </a>
-              </li>
-          <?php endforeach; ?>
-        </ul>
-    </nav>
-</aside>
-
-<main class="main">
-    <?php \Core\Utils\Inclusion::include_view($view_name); ?>
-</main>
+<?php include General::$views_path . '/' . $view_name . '.php'; ?>
 
 <footer class="footer">
     Футер
