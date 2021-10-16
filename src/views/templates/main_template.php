@@ -1,3 +1,13 @@
+<?php
+
+function get_link($item) {
+    return $item['action']
+      ? $item['controller'] . '/' . $item['action']
+      : $item['controller'];
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,13 +32,7 @@
         <ul>
             <?php foreach ($navigation_items as $item): ?>
                 <li>
-                    <?php
-                        $link = ($item['action']
-                            ? $item['controller'] . '/' . $item['action']
-                            : $item['controller']
-                        )
-                    ?>
-                    <a href="./<?= $link ?>">
+                    <a href="./<?= get_link($item) ?>">
                       <?= $item['title'] ?>
                     </a>
                 </li>
@@ -42,13 +46,7 @@
         <ul>
           <?php foreach ($submenu as $item): ?>
               <li>
-                <?php
-                $link = ($item['action']
-                  ? $item['controller'] . '/' . $item['action']
-                  : $item['controller']
-                )
-                ?>
-                  <a href="./<?= $link ?>">
+                  <a href="./<?= get_link($item) ?>">
                     <?= $item['title'] ?>
                   </a>
               </li>
