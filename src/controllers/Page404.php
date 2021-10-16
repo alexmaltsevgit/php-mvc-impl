@@ -14,8 +14,6 @@ class Page404Controller extends BaseView {
 
     $this->render('404', [
       'css_file_name' => 'style',
-      'navigation_items' => $navigation_items,
-      'submenu' => []
     ]);
   }
 }

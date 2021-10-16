@@ -9,13 +9,8 @@ use Core\MVC\BaseController;
 
 class IndexController extends BaseController {
   public function action_index() {
-    $navigation_model = new NavigationModel();
-    $navigation_items = $navigation_model->get_data();
-
     $this->render('index', [
       'css_file_name' => 'style',
-      'navigation_items' => $navigation_items,
-      'submenu' => []
     ]);
   }
 
@@ -30,9 +25,8 @@ class IndexController extends BaseController {
       }
     }
 
-    $this->render('index', [
+    $this->render('with_submenu', [
       'css_file_name' => 'style',
-      'navigation_items' => $navigation_items,
       'submenu' => $submenu
     ]);
   }
