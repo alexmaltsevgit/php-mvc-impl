@@ -28,6 +28,7 @@ class Router {
   public function get_page() {
     $session = new Session();
     $session->start();
+    $session->unauthenticate_if_time_expired();
 
     $this->set_current_route();
     $controller = $this->get_current_controller();
