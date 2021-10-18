@@ -53,13 +53,23 @@ class Session {
   }
 
 
-  public function is_authenticated() {
+  public function get_is_authenticated() {
     return self::$session['is_authenticated'];
   }
 
 
   public function get_authentication_expiration() {
     return self::$session['authentication_expiration'];
+  }
+
+
+  public function get_is_admin() {
+    return self::$session['is_admin'];
+  }
+
+
+  public function get_userid() {
+    return self::$session['userid'];
   }
 
 

@@ -145,6 +145,11 @@ class Database {
   }
 
 
+  public function get_last_id() {
+    return self::$connection->insert_id;
+  }
+
+
   private function exec_parameterized() {
     $types = '';
     foreach ($this->types as $type) {

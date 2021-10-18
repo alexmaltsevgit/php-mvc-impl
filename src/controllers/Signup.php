@@ -7,14 +7,18 @@ require_once 'src/models/User.php';
 use Core\Database;
 use Core\HttpArgumentsProvider;
 use Core\MVC\BaseController;
+use Core\Session;
 
 
 class SignupController extends BaseController {
   use FormFilter;
 
   public function action_index() {
-    $user_model = new User();
-    $users = $user_model->get_data()->fetch_all(MYSQLI_ASSOC);
+    $session = new Session();
+    if ($session->get_is_authenticated()) {
+      $this->redirect();
+      return;
+    }
 
     $this->render('signup', [
       'css_file_name' => 'style',
@@ -45,6 +49,9 @@ class SignupController extends BaseController {
           ['column' => 'is_admin' , 'value' => 0, 'type' => 'i'], // not admin
         ])
         ->exec();
+
+      $session = new Session();
+      $session->authenticate($db->get_last_id());
     }
 
     echo json_encode($validated);

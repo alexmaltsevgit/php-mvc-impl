@@ -48,8 +48,10 @@
                 body: body
             });
 
-            const data = await response.json();
-            console.log(data)
+            const result = await response.json();
+            if (result) {
+                document.location.href = '<?= \Config\General::$site_url ?>'
+            }
         })
     });
 
