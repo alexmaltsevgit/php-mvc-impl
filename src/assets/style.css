@@ -84,3 +84,8 @@ ul {
     padding: 20px 15px;
     font-size: 1rem;
 }
+
+.error-message {
+    display: none;
+    color: #e20e0e;
+}
