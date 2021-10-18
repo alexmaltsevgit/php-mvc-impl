@@ -40,6 +40,11 @@ class NavigationModel extends \Core\MVC\BaseModel {
         'title' => 'Три',
         'controller' => 'three',
         'action' => ''
+      ],
+      [
+        'title' => 'Регистрация',
+        'controller' => 'signup',
+        'action' => ''
       ]
     ];
   }
