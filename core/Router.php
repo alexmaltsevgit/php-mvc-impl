@@ -98,7 +98,7 @@ class Router {
   }
 
 
-  public static function redirect($controller, $action = '') {
+  public static function redirect($controller = '', $action = '') {
     $host = 'http://' . General::$site_url . '/';
     $path = ($action)
       ? "$controller/$action"

@@ -21,7 +21,7 @@ abstract class BaseController {
     $view->render($view_name, $data);
   }
 
-  protected function redirect($controller, $action = '') {
+  protected function redirect($controller = '', $action = '') {
     Router::redirect($controller, $action);
   }
 }
