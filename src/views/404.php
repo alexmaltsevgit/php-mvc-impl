@@ -1,5 +1,3 @@
-<aside class="sidebar"></aside>
-
 <main class="main">
     <div style="color: #e20e0e">
         Страница 404
