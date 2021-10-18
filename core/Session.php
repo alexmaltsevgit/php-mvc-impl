@@ -5,31 +5,68 @@ namespace Core;
 
 
 use Core\Utils\Debug;
+use DateTime;
 use Exception;
 
 
 class Session {
+  private static $session;
+
+
+  public function __construct() {
+    self::$session = &$_SESSION;
+  }
+
+
   public function start() {
     session_start();
   }
 
 
-  public function is_authenticated() {
-    return $_SESSION['is_authenticated'];
+  public function authenticate($userid, $is_admin = 0) {
+    $this->set_userid($userid);
+    $this->set_is_authenticated(true);
+    $this->set_is_admin($is_admin);
+
+    $expires_at = strtotime('+' . \Config\Session::$auto_auth_period, time());
+    $this->set_authentication_expiration($expires_at);
   }
 
 
-  public function is_admin() {
-    return $_SESSION['is_admin'];
+  public function unauthenticate() {
+    $this->set_userid(-1);
+    $this->set_is_authenticated(false);
+    $this->set_is_admin(0);
+    $this->set_authentication_expiration(0);
+  }
+
+
+  public function is_authenticated() {
+    return self::$session['is_authenticated'];
+  }
+
+
+  public function get_authentication_expiration() {
+    return self::$session['authentication_expiration'];
+  }
+
+
+  public function set_authentication_expiration($timestamp) {
+    self::$session['authentication_expiration'] = $timestamp;
   }
 
 
   public function set_is_authenticated($value) {
-    $_SESSION['is_authenticated'] = $value;
+    self::$session['is_authenticated'] = $value;
   }
 
 
   public function set_is_admin($value) {
-    $_SESSION['is_admin'] = $value;
+    self::$session['is_admin'] = $value;
+  }
+
+
+  public function set_userid($userid) {
+    self::$session['userid'] = $userid;
   }
 }
