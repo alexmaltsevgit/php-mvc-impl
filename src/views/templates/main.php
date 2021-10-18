@@ -1,6 +1,9 @@
 <?php
 
 
+require_once 'src/models/Navigation.php';
+
+
 use Config\General;
 
 
@@ -45,7 +48,8 @@ function get_link($item) {
     </nav>
 </header>
 
-<?php include General::$views_path . '/' . $view_name . '.php'; ?>
+<?php include General::$views_path . '/sidebars/' . $sidebar . '.php'; ?>
+<?php include General::$views_path . '/' . $view . '.php'; ?>
 
 <footer class="footer">
     Футер

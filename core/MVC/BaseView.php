@@ -8,10 +8,10 @@ use Config\General;
 
 
 class BaseView {
-  private $template_name = 'main_template';
+  private $template_name = 'main';
 
 
-  public function render($view_name, $data = null) {
+  public function render($view, $data = null) {
     if (is_array($data)) {
       extract($data);
     }

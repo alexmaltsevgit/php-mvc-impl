@@ -68,3 +68,19 @@ ul {
 .navigation.column > ul {
     flex-direction: column;
 }
+
+.fields > .field:not(:last-child) {
+    display: block;
+    margin-bottom: 40px;
+}
+
+.field > input {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 15px;
+}
+
+.field > input[type=submit] {
+    padding: 20px 15px;
+    font-size: 1rem;
+}

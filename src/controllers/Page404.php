@@ -1,7 +1,7 @@
 <?php
 
 
-require_once 'src/models/NavigationModel.php';
+require_once 'src/models/Navigation.php';
 
 
 use Core\MVC\BaseView;
@@ -14,6 +14,7 @@ class Page404Controller extends BaseView {
 
     $this->render('404', [
       'css_file_name' => 'style',
+      'sidebar' => 'empty'
     ]);
   }
 }
