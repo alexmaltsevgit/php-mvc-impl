@@ -26,6 +26,9 @@ class Router {
 
 
   public function get_page() {
+    $session = new Session();
+    $session->start();
+
     $this->set_current_route();
     $controller = $this->get_current_controller();
     $action = $this->get_current_action();
@@ -95,10 +98,20 @@ class Router {
   }
 
 
-  private function get_404() {
+  public static function redirect($controller, $action = '') {
     $host = 'http://' . General::$site_url . '/';
+    $path = ($action)
+      ? "$controller/$action"
+      : $controller;
+
+    header('Location:' . $host . $path);
+  }
+
+
+  private function get_404() {
     header('HTTP/1.1 404 Not Found');
     header("Status: 404 Not Found");
-    header('Location:' . $host . 'Page404');
+
+    self::redirect('Page404');
   }
 }

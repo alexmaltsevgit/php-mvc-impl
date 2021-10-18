@@ -4,6 +4,9 @@
 namespace Core\MVC;
 
 
+use Core\Router;
+
+
 abstract class BaseController {
   public $current_action;
 
@@ -16,5 +19,9 @@ abstract class BaseController {
     }
 
     $view->render($view_name, $data);
+  }
+
+  protected function redirect($controller, $action = '') {
+    Router::redirect($controller, $action);
   }
 }
