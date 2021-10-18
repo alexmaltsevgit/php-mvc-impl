@@ -1,7 +1,7 @@
 <?php
 
 
-require_once 'src/models/NavigationModel.php';
+require_once 'src/models/Navigation.php';
 
 
 use Core\MVC\BaseController;
@@ -11,6 +11,7 @@ class IndexController extends BaseController {
   public function action_index() {
     $this->render('index', [
       'css_file_name' => 'style',
+      'sidebar' => 'signin'
     ]);
   }
 
@@ -27,6 +28,7 @@ class IndexController extends BaseController {
 
     $this->render('with_submenu', [
       'css_file_name' => 'style',
+      'sidebar' => 'submenu',
       'submenu' => $submenu
     ]);
   }
